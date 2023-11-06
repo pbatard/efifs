@@ -30,6 +30,7 @@ env:
   GCC5_ARM_PREFIX: arm-linux-gnueabi-
   GCC5_AARCH64_PREFIX: aarch64-linux-gnu-
   GCC5_RISCV64_PREFIX: riscv64-linux-gnu-
+  GCC5_LOONGARCH64_PREFIX: loongarch64-linux-gnu-
   NASM_VERSION: 2.15.05
 
 jobs:
@@ -38,7 +39,7 @@ jobs:
 
     strategy:
       matrix:
-        arch: [X64, IA32, AARCH64, ARM, RISCV64]
+        arch: [X64, IA32, AARCH64, ARM, RISCV64, LOONGARCH64]
         include:
         - arch: X64
           short: x64
@@ -55,6 +56,9 @@ jobs:
         - arch: RISCV64
           short: riscv64
           pkgs: gcc-riscv64-linux-gnu python3-distutils uuid-dev
+        - arch: LOONGARCH64
+          short: loongarch64
+          pkgs: gcc-loongarch64-linux-gnu python3-distutils uuid-dev
 
     steps:
     - name: Install toolchain
